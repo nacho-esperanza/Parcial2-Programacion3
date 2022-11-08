@@ -8,6 +8,7 @@ class ArbolBinario
 {
 protected:
   NodoArbol<T> *root;
+  int tam=0;
 
 public:
   ArbolBinario();
@@ -29,6 +30,8 @@ public:
   bool esVacio();
 
   void print();
+
+  void tamanio();
 
 private:
   T search(T data, NodoArbol<T> *r);
@@ -95,7 +98,7 @@ T ArbolBinario<T>::search(T data, NodoArbol<T> *r)
  * @param dato Dato a agregar
  */
 template <class T>
-void ArbolBinario<T>::put(T data) { root = put(data, root); }
+void ArbolBinario<T>::put(T data) { root = put(data, root); tam++;}
 
 template <class T>
 NodoArbol<T> *ArbolBinario<T>::put(T data, NodoArbol<T> *r)
@@ -108,6 +111,7 @@ NodoArbol<T> *ArbolBinario<T>::put(T data, NodoArbol<T> *r)
   if (r->getData() == data)
   {
       r->ocur();
+      tam--;
       return r;
   }
 
@@ -301,6 +305,11 @@ void ArbolBinario<T>::print()
 {
   if (root != NULL)
     root->print(false, "");
+}
+
+template <class T>
+void ArbolBinario<T>::tamanio() {
+    cout<<"El archivo tiene "<<tam<<" palabras diferentes\n";
 }
 
 #endif // U05_ARBOL_ARBOL_ARBOLBINARIO_H_

@@ -77,6 +77,7 @@ int main() {
     while(!palabras.esVacia()){
         arbol1->put(palabras.desencolar());
     }
+    arbol1->tamanio();
     arbol1->inorder();
 
 
