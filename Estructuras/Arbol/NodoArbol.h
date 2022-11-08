@@ -9,6 +9,7 @@ class NodoArbol
 {
 private:
   T data;
+  int oc=1;
   NodoArbol *left, *right;
 
 public:
@@ -70,6 +71,10 @@ public:
         left->print(false, identacion + (esDerecho ? "|    " : "     "));
     }
 }
+
+void ocur(){
+      oc++;
+  }
 
   };
 

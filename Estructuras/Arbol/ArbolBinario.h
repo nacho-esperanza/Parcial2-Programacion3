@@ -107,7 +107,8 @@ NodoArbol<T> *ArbolBinario<T>::put(T data, NodoArbol<T> *r)
 
   if (r->getData() == data)
   {
-    throw 200;
+      r->ocur();
+      return r;
   }
 
   if (r->getData() > data)

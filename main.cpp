@@ -13,9 +13,9 @@ using namespace std;
 
 
 int main() {
-    string line, pala;
+    string line, pala, ex;
     ifstream inMyStream ;
-    int let=0,word=0,lin=0;
+    int let=0,word=0,lin=0,f=0;
     inMyStream.open("C:/Users/santi/Desktop/Prog III/Parcial2-Programacion3/palabras.txt");
     ArbolBinario<string> *arbol1 = new ArbolBinario<string>();
     Cola<string> palabras;
@@ -35,7 +35,7 @@ int main() {
             if(getline(inMyStream,line)){
                 word++;
                 lin++;
-            };
+            }
 
             int numofChars= line.length();
             for (unsigned int n = 0; n<line.length();n++)
@@ -49,7 +49,14 @@ int main() {
                     pala="";
                 }else{
                     pala+=line.at(n);
+
+                    if(n==line.length()-1){
+                        palabras.encolar(pala);
+                        pala="";
+                    }
                 }
+
+
             }
             let+=numofChars;
         }
@@ -66,7 +73,11 @@ int main() {
 
     }
 
-    // II
+    // III
+    while(!palabras.esVacia()){
+        arbol1->put(palabras.desencolar());
+    }
+    arbol1->inorder();
 
 
 
