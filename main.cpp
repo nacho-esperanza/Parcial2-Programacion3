@@ -73,12 +73,15 @@ int main() {
 
     }
 
-    // III
+    // II y III
     while(!palabras.esVacia()){
         arbol1->put(palabras.desencolar());
     }
     arbol1->tamanio();
     arbol1->inorder();
+
+    // IV
+
 
 
 
