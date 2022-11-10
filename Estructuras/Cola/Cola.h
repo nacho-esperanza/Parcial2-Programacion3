@@ -2,6 +2,13 @@
 #define U04_COLAS_COLA_COLA_H_
 
 #include "nodo.h"
+#include <ctime>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <string.h>
+#include <iostream>
+#include <fstream>
 
 /**
  * Clase que implementa una Cola generica, ya que puede
@@ -26,7 +33,11 @@ public:
   bool esVacia();
 
   T peek();
+
+  int informarOcurrencias(std::string dato);
 };
+
+
 
 /**
  * Constructor de la clase Cola
@@ -133,4 +144,39 @@ T Cola<T>::peek()
   return tope->getDato();
 }
 
+/**
+ * Informar la cantidad de veces que aparece una o un grupo de palabras solicitadas por el usuario.
+ *
+ * @param ocurrencia
+ * @param dato
+ */
+template<class T>
+int Cola<T>::informarOcurrencias(std::string dato) {
+    /*Método creado modificando el método del 1er parcial */
+    Nodo<T> *nodoOcurrencia = tope;
+
+    int contador = 0;
+
+    if (nodoOcurrencia == nullptr) {//Cola vacia!
+        throw 400;
+    }
+
+    if (dato == " ") {//Modificado de remover!!
+        throw 400;
+    } else {
+
+        while (nodoOcurrencia != nullptr) {
+
+            if (dato == nodoOcurrencia->getDato()) {
+                contador++;
+            }
+            nodoOcurrencia = nodoOcurrencia->getSiguiente();
+        }
+
+        if (nodoOcurrencia == nullptr) {//final cola
+            return contador;
+
+    }
+}
+    }
 #endif // U04_COLAS_COLA_COLA_H_

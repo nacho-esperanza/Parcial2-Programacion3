@@ -1,30 +1,64 @@
 #include <ctime>
 #include <iostream>
-#include <fstream>
+
+
 #include <string>
 #include <string.h>
 #include "Estructuras/Cola/Cola.h"
 #include "Estructuras/Lista/Lista.h"
 #include "Estructuras/Arbol/ArbolBinario.h"
 #include "Estructuras/Arbol/ArbolBinarioAVL.h"
+#include <vector>
+#include <algorithm>
 
 
 using namespace std;
 
+struct PalStr{
+    int oc;
+    string pal;
+
+
+public:
+static bool comparePalByValue(PalStr &a, PalStr &b) {
+    return a.oc < b.oc;
+}
+
+static bool compareCpusByProperty1(PalStr &a, PalStr &b) {
+    return a.pal < b.pal;
+}
+} typedef PalStr;
+
+void printVector(vector<PalStr> &vec)
+{
+    for (const auto &item : vec) {
+        cout << item.pal << " : "
+             << item.oc << endl;
+    }
+    cout << endl;
+}
 
 int main() {
-    string line, pala, ex;
+    string line, pala, oc;
+    string pala2, dato;
     ifstream inMyStream ;
     int let=0,word=0,lin=0,f=0;
-    inMyStream.open("C:/Users/santi/Desktop/Prog III/Parcial2-Programacion3/palabras.txt");
+    inMyStream.open("C:/Users/Nacho/Desktop/Parcial2-Programacion3/palabras.txt");
     ArbolBinario<string> *arbol1 = new ArbolBinario<string>();
+    ArbolBinario<string> *arbol2 = new ArbolBinario<string>();
     Cola<string> palabras;
+    Cola<string> palabras2;
+    vector<PalStr> V1;
 
     clock_t begin;
 
     cout << "Comenzando a medir Tiempo\n" << endl;
 
     // I
+
+    cout << "Ingrese dato" << ':';
+    cin >> dato;
+    cout << endl;
 
     if (inMyStream.is_open())
     {
@@ -47,12 +81,18 @@ int main() {
                     word++;
                     palabras.encolar(pala);
                     pala="";
+                    palabras2.encolar(pala2);
+                    pala2="";
+
                 }else{
                     pala+=line.at(n);
+                    pala2+=line.at(n);
 
                     if(n==line.length()-1){
                         palabras.encolar(pala);
                         pala="";
+                        palabras2.encolar(pala2);
+                        pala2="";
                     }
                 }
 
@@ -80,8 +120,11 @@ int main() {
     arbol1->tamanio();
     arbol1->inorder();
 
-    // IV
+    // IV CREAR 2 VECTORES, 1 PARA PALABRAS, OTRO PARA OCURRENCIAS Y DESPUES ORDENAR CON SORT DE LA PAGINA.
 
+
+    // V
+    cout << "La cantidad de veces que aparece la palabra " << dato << " es " << palabras2.informarOcurrencias(dato);
 
 
 
