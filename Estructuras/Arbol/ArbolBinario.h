@@ -155,7 +155,6 @@ NodoArbol<T> *ArbolBinario<T>::remove(T data, NodoArbol<T> *r)
 
   if (r->getData() == data)
   {
-      tam--;
 
     if (r->getLeft() == nullptr && r->getRight() == nullptr)
     {

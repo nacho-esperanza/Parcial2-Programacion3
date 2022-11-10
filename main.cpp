@@ -42,16 +42,27 @@ string aMinuscula(string cadena) {
     return cadena;
 }
 
+void Ignorar(vector<PalStr> & Pall, string Palla) {
+    Pall.erase(
+            std::remove_if(Pall.begin(), Pall.end(), [&](PalStr const & palab) {
+                return palab.pal == Palla;
+            }),
+            Pall.end());
+}
+
 
 int main() {
     string line, pala, oc;
-    string pala2, dato;
+    string pala2, dato, pala3;
     ifstream inMyStream ;
+    ifstream Exclutor;
     int let=0,word=0,lin=0,f=0;
     inMyStream.open("C:/Users/santi/Desktop/Prog III/Parcial2-Programacion3/palabras.txt");
     ArbolBinario<string> *arbol1 = new ArbolBinario<string>();
     Cola<string> palabras;
     Cola<string> palabras2;
+    Cola<string> palabras3;
+
 
     clock_t begin;
 
@@ -127,6 +138,47 @@ int main() {
 
     // IV
 
+    Exclutor.open("C:/Users/santi/Desktop/Prog III/Parcial2-Programacion3/Excluir.txt");
+    if (Exclutor.is_open())
+    {
+
+
+        while(!Exclutor.eof())
+        {
+            if(getline(Exclutor,line)){
+
+            }
+            for (unsigned int n = 0; n<line.length();n++)
+            {
+
+                if (line.at(n) == ' ')
+                {
+                    pala3 = aMinuscula(pala3);
+                    palabras3.encolar(pala3);
+                    pala3="";
+                }else{
+                    pala3+=line.at(n);
+
+                    if(n==line.length()-1){
+                        palabras3.encolar(pala3);
+                        pala3="";
+                    }
+                }
+
+
+            }
+        }
+
+
+    }
+
+    {
+        Exclutor.close(); //Cierro el archivo
+
+    }
+
+
+
     vector<PalStr> ej4;
     PalStr Mov;
     string ejPal4[arbol1->gettamanio()];
@@ -137,12 +189,15 @@ int main() {
         Mov.oc=ejOcur4[i];
         ej4.push_back(Mov);
     }
+    while(!palabras3.esVacia()){
+        Ignorar(ej4,palabras3.desencolar());
+    }
     sort(ej4.begin(),ej4.end(), comparePalByValue);
     printVector(ej4);
 
 
     // V
-    cout << "Palabra:  " << dato << "->  ocurrencias: " << palabras2.informarOcurrencias(dato);
+    cout << "Palabra:  " << dato << "--> ocurrencias: " << palabras2.informarOcurrencias(dato);
 
 
 
