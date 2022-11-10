@@ -34,11 +34,7 @@ public:
 
   T peek();
 
-<<<<<<< HEAD
-    int informarOcurrencias(std::string dato);
-=======
   int informarOcurrencias(std::string dato);
->>>>>>> 9917e82c22022758d77e317eeb21fec7ad3248b3
 };
 
 
@@ -180,12 +176,8 @@ int Cola<T>::informarOcurrencias(std::string dato) {
         if (nodoOcurrencia == nullptr) {//final cola
             return contador;
 
-<<<<<<< HEAD
         }
     }
 }
 
-=======
-
->>>>>>> 9917e82c22022758d77e317eeb21fec7ad3248b3
 #endif // U04_COLAS_COLA_COLA_H_
