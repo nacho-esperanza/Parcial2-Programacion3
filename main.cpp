@@ -13,7 +13,7 @@
 
 
 using namespace std;
-
+/*
 struct PalStr{
     int oc;
     string pal;
@@ -37,6 +37,12 @@ void printVector(vector<PalStr> &vec)
     }
     cout << endl;
 }
+ */
+
+string aMinuscula(string cadena) {
+    for (int i = 0; i < cadena.length(); i++) cadena[i] = tolower(cadena[i]);
+    return cadena;
+}
 
 int main() {
     string line, pala, oc;
@@ -45,10 +51,9 @@ int main() {
     int let=0,word=0,lin=0,f=0;
     inMyStream.open("C:/Users/Nacho/Desktop/Parcial2-Programacion3/palabras.txt");
     ArbolBinario<string> *arbol1 = new ArbolBinario<string>();
-    ArbolBinario<string> *arbol2 = new ArbolBinario<string>();
     Cola<string> palabras;
     Cola<string> palabras2;
-    vector<PalStr> V1;
+    /*vector<PalStr> V1;*/
 
     clock_t begin;
 
@@ -58,6 +63,7 @@ int main() {
 
     cout << "Ingrese dato" << ':';
     cin >> dato;
+    dato = aMinuscula(dato);
     cout << endl;
 
     if (inMyStream.is_open())
@@ -79,13 +85,17 @@ int main() {
                 {
                     numofChars--;
                     word++;
+                    pala = aMinuscula(pala);
                     palabras.encolar(pala);
                     pala="";
+                    pala2 = aMinuscula(pala2);
                     palabras2.encolar(pala2);
                     pala2="";
 
                 }else{
+                    aMinuscula(pala);
                     pala+=line.at(n);
+                    aMinuscula(pala2);
                     pala2+=line.at(n);
 
                     if(n==line.length()-1){
