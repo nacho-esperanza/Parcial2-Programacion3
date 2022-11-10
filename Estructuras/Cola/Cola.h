@@ -2,6 +2,13 @@
 #define U04_COLAS_COLA_COLA_H_
 
 #include "nodo.h"
+#include <ctime>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <string.h>
+#include <iostream>
+#include <fstream>
 
 /**
  * Clase que implementa una Cola generica, ya que puede
@@ -27,8 +34,14 @@ public:
 
   T peek();
 
+<<<<<<< HEAD
     int informarOcurrencias(std::string dato);
+=======
+  int informarOcurrencias(std::string dato);
+>>>>>>> 9917e82c22022758d77e317eeb21fec7ad3248b3
 };
+
+
 
 /**
  * Constructor de la clase Cola
@@ -167,8 +180,12 @@ int Cola<T>::informarOcurrencias(std::string dato) {
         if (nodoOcurrencia == nullptr) {//final cola
             return contador;
 
+<<<<<<< HEAD
         }
     }
 }
 
+=======
+
+>>>>>>> 9917e82c22022758d77e317eeb21fec7ad3248b3
 #endif // U04_COLAS_COLA_COLA_H_
