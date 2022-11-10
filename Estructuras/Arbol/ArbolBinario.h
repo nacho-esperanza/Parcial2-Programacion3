@@ -3,6 +3,7 @@
 
 #include "NodoArbol.h"
 
+
 template <class T>
 class ArbolBinario
 {
@@ -33,6 +34,10 @@ public:
 
   void tamanio();
 
+  int gettamanio();
+
+    void OcurEj4(T Palabras[],int ocur[]);
+
 private:
   T search(T data, NodoArbol<T> *r);
   NodoArbol<T> *put(T data, NodoArbol<T> *r);
@@ -41,6 +46,7 @@ private:
   void preorder(NodoArbol<T> *r);
   void inorder(NodoArbol<T> *r);
   void postorder(NodoArbol<T> *r);
+  void OcurEj4(T Palabras[],int ocur[],NodoArbol<T> *r, int& n);
 };
 
 /**
@@ -149,6 +155,7 @@ NodoArbol<T> *ArbolBinario<T>::remove(T data, NodoArbol<T> *r)
 
   if (r->getData() == data)
   {
+      tam--;
 
     if (r->getLeft() == nullptr && r->getRight() == nullptr)
     {
@@ -311,5 +318,36 @@ template <class T>
 void ArbolBinario<T>::tamanio() {
     cout<<"El archivo tiene "<<tam<<" palabras diferentes\n";
 }
+
+template <class T>
+int ArbolBinario<T>::gettamanio() {
+    return tam;
+}
+
+template <class T>
+void ArbolBinario<T>::OcurEj4(T Palabras[],int ocur[])
+{
+    int a=0;
+    OcurEj4(Palabras,ocur,root,a);
+
+
+}
+
+template <class T>
+void ArbolBinario<T>::OcurEj4(T Palabras[],int ocur[],NodoArbol<T> *r,int& n)
+{
+    if (r == nullptr)
+    {
+        return;
+    }
+
+    OcurEj4(Palabras,ocur,r->getLeft(),n);
+    Palabras[n]=r->getData();
+    ocur[n]=r->getocur();
+    n++;
+    OcurEj4(Palabras,ocur,r->getRight(),n);
+}
+
+
 
 #endif // U05_ARBOL_ARBOL_ARBOLBINARIO_H_

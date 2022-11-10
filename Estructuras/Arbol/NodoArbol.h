@@ -76,6 +76,10 @@ void ocur(){
       oc++;
   }
 
+  int getocur(){
+      return oc;
+  }
+
   };
 
 #endif // U05_ARBOL_ARBOL_NODOARBOL_H_

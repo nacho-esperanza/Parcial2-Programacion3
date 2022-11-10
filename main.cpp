@@ -3,28 +3,66 @@
 #include <fstream>
 #include <string>
 #include <string.h>
+#include <vector>
+#include <algorithm>
 #include "Estructuras/Cola/Cola.h"
 #include "Estructuras/Lista/Lista.h"
 #include "Estructuras/Arbol/ArbolBinario.h"
 #include "Estructuras/Arbol/ArbolBinarioAVL.h"
 
 
+
 using namespace std;
+
+struct PalStr {
+    int oc;
+    string pal;
+
+};
+
+    bool comparePalByValue( PalStr &a, PalStr &b) {
+        return (a.oc > b.oc);
+    }
+
+    bool compareCpusByProperty1(PalStr &a, PalStr &b) {
+        return (a.pal < b.pal);
+    }
+
+void printVector(vector<PalStr> &vec)
+{
+    for (const auto &item : vec) {
+        cout << item.pal << " : "
+             << item.oc << endl;
+    }
+    cout << endl;
+}
+
+string aMinuscula(string cadena) {
+    for (int i = 0; i < cadena.length(); i++) cadena[i] = tolower(cadena[i]);
+    return cadena;
+}
 
 
 int main() {
-    string line, pala, ex;
+    string line, pala, oc;
+    string pala2, dato;
     ifstream inMyStream ;
     int let=0,word=0,lin=0,f=0;
     inMyStream.open("C:/Users/santi/Desktop/Prog III/Parcial2-Programacion3/palabras.txt");
     ArbolBinario<string> *arbol1 = new ArbolBinario<string>();
     Cola<string> palabras;
+    Cola<string> palabras2;
 
     clock_t begin;
 
     cout << "Comenzando a medir Tiempo\n" << endl;
 
     // I
+
+    cout << "Ingrese dato" << ':';
+    cin >> dato;
+    dato = aMinuscula(dato);
+    cout << endl;
 
     if (inMyStream.is_open())
     {
@@ -45,14 +83,21 @@ int main() {
                 {
                     numofChars--;
                     word++;
+                    pala = aMinuscula(pala);
                     palabras.encolar(pala);
                     pala="";
+                    pala2 = aMinuscula(pala2);
+                    palabras2.encolar(pala2);
+                    pala2="";
                 }else{
                     pala+=line.at(n);
+                    pala2+=line.at(n);
 
                     if(n==line.length()-1){
                         palabras.encolar(pala);
                         pala="";
+                        palabras2.encolar(pala2);
+                        pala2="";
                     }
                 }
 
@@ -82,6 +127,22 @@ int main() {
 
     // IV
 
+    vector<PalStr> ej4;
+    PalStr Mov;
+    string ejPal4[arbol1->gettamanio()];
+    int ejOcur4[arbol1->gettamanio()];
+    arbol1->OcurEj4(ejPal4, ejOcur4);
+    for(int i=0;i<arbol1->gettamanio();i++){
+        Mov.pal=ejPal4[i];
+        Mov.oc=ejOcur4[i];
+        ej4.push_back(Mov);
+    }
+    sort(ej4.begin(),ej4.end(), comparePalByValue);
+    printVector(ej4);
+
+
+    // V
+    cout << "Palabra:  " << dato << "->  ocurrencias: " << palabras2.informarOcurrencias(dato);
 
 
 
