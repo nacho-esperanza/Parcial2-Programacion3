@@ -93,9 +93,7 @@ int main() {
                     pala2="";
 
                 }else{
-                    aMinuscula(pala);
                     pala+=line.at(n);
-                    aMinuscula(pala2);
                     pala2+=line.at(n);
 
                     if(n==line.length()-1){
