@@ -313,15 +313,21 @@ void ArbolBinario<T>::print()
     root->print(false, "");
 }
 
+// Se crea funcion tamanio() que nos dice cuantas palabras diferentes tiene el Arbol.
+
 template <class T>
 void ArbolBinario<T>::tamanio() {
     cout<<"El archivo tiene "<<tam<<" palabras diferentes\n";
 }
 
+// Funcion gettamanio() retorna la cantidad de nodos que tiene el arbol.
+
 template <class T>
 int ArbolBinario<T>::gettamanio() {
     return tam;
 }
+
+// Metodo que recorre el arbol en modo InOrder para poner en los vectores Palabras[] y ocur[], sus respectivos valores.
 
 template <class T>
 void ArbolBinario<T>::OcurEj4(T Palabras[],int ocur[])
@@ -331,6 +337,9 @@ void ArbolBinario<T>::OcurEj4(T Palabras[],int ocur[])
 
 
 }
+
+// Metodo que recorre el arbol en modo InOrder para poner en los vectores Palabras[] y ocur[], sus respectivos valores.
+// n sirve para saber la posicion en la que estas en el arbol de modo inOrder.
 
 template <class T>
 void ArbolBinario<T>::OcurEj4(T Palabras[],int ocur[],NodoArbol<T> *r,int& n)

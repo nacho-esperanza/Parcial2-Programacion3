@@ -72,9 +72,13 @@ public:
     }
 }
 
+// ocur suma +1 a la variable oc que sirve para contar las ocurrencias de cada palabra.
+
 void ocur(){
       oc++;
   }
+
+  // getocur() retorna la cantidad de ocurrencias.
 
   int getocur(){
       return oc;

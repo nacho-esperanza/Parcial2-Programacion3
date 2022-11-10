@@ -147,7 +147,6 @@ T Cola<T>::peek()
 /**
  * Informar la cantidad de veces que aparece una o un grupo de palabras solicitadas por el usuario.
  *
- * @param ocurrencia
  * @param dato
  */
 template<class T>
